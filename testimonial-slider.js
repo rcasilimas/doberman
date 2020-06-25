@@ -86,16 +86,26 @@ var TestimonialSlider = function (_React$Component) {
           "div",
           { style: { height: "390px", borderRadius: "10px", padding: "10px", backgroundColor: "whitesmoke", opacity: "0.5", boxShadow: "3px 3px 3px 3px #ccc", width: "26%", textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" } },
           React.createElement(
-            "h4",
-            { style: { marginBottom: "10px" } },
-            "\"",
+            "p",
+            { style: { marginBottom: "10px", fontStyle: "italic" } },
+            React.createElement(
+              "strong",
+              null,
+              "\""
+            ),
+            " ",
             displayedTextLeft,
-            "\""
+            " ",
+            React.createElement(
+              "strong",
+              null,
+              "\""
+            )
           ),
           React.createElement(
             "h4",
             null,
-            "-",
+            "- ",
             displayedPersonLeft
           ),
           React.createElement("img", { style: { height: "120px", width: "220px", marginTop: "15px" }, src: displayedDogLeft })
@@ -103,35 +113,55 @@ var TestimonialSlider = function (_React$Component) {
         React.createElement(
           "div",
           { style: { height: "390px", borderRadius: "10px", padding: "10px", backgroundColor: "whitesmoke", opacity: "0.9", boxShadow: "3px 3px 3px 3px #ccc", width: "26%", textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" } },
+          React.createElement("img", { style: { height: "120px", width: "220px", marginBottom: "15px" }, src: displayedDogCenter }),
           React.createElement(
-            "h4",
-            { style: { marginBottom: "10px" } },
-            "\"",
+            "p",
+            { style: { marginBottom: "10px", fontStyle: "italic" } },
+            React.createElement(
+              "strong",
+              null,
+              "\""
+            ),
+            " ",
             displayedTextCenter,
-            "\""
+            " ",
+            React.createElement(
+              "strong",
+              null,
+              "\""
+            )
           ),
           React.createElement(
             "h4",
             null,
-            "-",
+            "- ",
             displayedPersonCenter
-          ),
-          React.createElement("img", { style: { height: "120px", width: "220px", marginTop: "15px" }, src: displayedDogCenter })
+          )
         ),
         React.createElement(
           "div",
           { style: { height: "390px", borderRadius: "10px", padding: "10px", backgroundColor: "whitesmoke", opacity: "0.5", boxShadow: "3px 3px 3px 3px #ccc", width: "26%", textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" } },
           React.createElement(
-            "h4",
-            { style: { marginBottom: "10px" } },
-            "\"",
+            "p",
+            { style: { marginBottom: "10px", fontStyle: "italic" } },
+            React.createElement(
+              "strong",
+              null,
+              "\""
+            ),
+            " ",
             displayedTextRight,
-            "\""
+            " ",
+            React.createElement(
+              "strong",
+              null,
+              "\""
+            )
           ),
           React.createElement(
             "h4",
             null,
-            "-",
+            "- ",
             displayedPersonRight
           ),
           React.createElement("img", { style: { height: "120px", width: "220px", marginTop: "15px" }, src: displayedDogRight })

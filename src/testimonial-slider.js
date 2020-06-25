@@ -76,18 +76,18 @@ class TestimonialSlider extends React.Component {
           }} style={{cursor: "pointer"}} src='./img/leftArrow.svg' />
         </div>
         <div style={{height: "390px", borderRadius: "10px", padding: "10px", backgroundColor: "whitesmoke", opacity: "0.5", boxShadow: "3px 3px 3px 3px #ccc", width: "26%", textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
-          <h4 style={{marginBottom: "10px"}}>"{displayedTextLeft}"</h4>
-          <h4>-{displayedPersonLeft}</h4>
+          <p style={{marginBottom: "10px", fontStyle: "italic"}}><strong>"</strong> {displayedTextLeft} <strong>"</strong></p>
+          <h4>- {displayedPersonLeft}</h4>
           <img style={{height: "120px", width: "220px", marginTop: "15px"}} src={displayedDogLeft} />
         </div>
         <div style={{height: "390px", borderRadius: "10px", padding: "10px", backgroundColor: "whitesmoke", opacity: "0.9", boxShadow: "3px 3px 3px 3px #ccc", width: "26%", textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
-          <h4 style={{marginBottom: "10px"}}>"{displayedTextCenter}"</h4>
-          <h4>-{displayedPersonCenter}</h4>
-          <img style={{height: "120px", width: "220px", marginTop: "15px"}} src={displayedDogCenter} />
+          <img style={{height: "120px", width: "220px", marginBottom: "15px"}} src={displayedDogCenter} />
+          <p style={{marginBottom: "10px", fontStyle: "italic"}}><strong>"</strong> {displayedTextCenter} <strong>"</strong></p>
+          <h4>- {displayedPersonCenter}</h4>
         </div>
         <div style={{height: "390px", borderRadius: "10px", padding: "10px", backgroundColor: "whitesmoke", opacity: "0.5", boxShadow: "3px 3px 3px 3px #ccc", width: "26%", textAlign: "center", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
-          <h4 style={{marginBottom: "10px"}}>"{displayedTextRight}"</h4>
-          <h4>-{displayedPersonRight}</h4>
+          <p style={{marginBottom: "10px", fontStyle: "italic"}}><strong>"</strong> {displayedTextRight} <strong>"</strong></p>
+          <h4>- {displayedPersonRight}</h4>
           <img style={{height: "120px", width: "220px", marginTop: "15px"}} src={displayedDogRight} />
         </div>
         <div onClick={() => {
