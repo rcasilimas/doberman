@@ -232,6 +232,13 @@ header {
     width: 200px;
 }
 
+.testimonial-pic2 {
+    border-radius: 4px;
+    margin: 10px;
+    height: 120px;
+    width: 120px;
+}
+
 .dog-name:after {
     display: block;
 	height: 2px;
@@ -450,6 +457,7 @@ header {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    cursor: pointer;
   }
   
   /* Modal Content (Image) */
@@ -532,6 +540,10 @@ header {
 	width: 100px;
 	margin: 0 auto;
 	margin-top: 30px;
+}
+
+#heritage-app {
+    width: 100%;
 }
 
 .btn-heritage {
