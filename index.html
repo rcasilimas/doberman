@@ -62,7 +62,7 @@
                         <p><strong>"</strong> This is my testimonial of my lovely dog Chinchilla, He is a very good boy. Thank you to Florida Doberman for having such high quality Dobermans and allowing me to adopt one of my own! <strong>"</strong></p>
                         <div class="testimonial-author">
                             <img src='img/person1.png' alt='testimonial-author' class="testimonial-author-pic">
-                            <h4>- Robert Gronksy</h4>
+                            <h4>- Robert G.</h4>
                         </div>
                     </div>
                     <div class="testimonial">
@@ -71,7 +71,7 @@
                         <p><strong>"</strong> This is my testimonial of my lovely dog Toby, He is a very good boy. Thank you to Florida Doberman for having such high quality Dobermans and allowing me to adopt one of my own! <strong>"</strong></p>
                         <div class="testimonial-author">
                             <img src='img/person2.png' alt='testimonial-author' class="testimonial-author-pic">
-                            <h4>- Tim Heartaway</h4>
+                            <h4>- Tim H.</h4>
                         </div>
                     </div>
                     <div class="testimonial">
@@ -80,7 +80,7 @@
                         <p><strong>"</strong> This is my testimonial of my lovely dog Jackolope, He is a very good boy. Thank you to Florida Doberman for having such high quality Dobermans and allowing me to adopt one of my own! <strong>"</strong></p>
                         <div class="testimonial-author">
                             <img src='img/person3.png' alt='testimonial-author' class="testimonial-author-pic">
-                            <h4>- Alisha Loiterman</h4>
+                            <h4>- Alisha L.</h4>
                         </div>
                     </div>
                 </div>
@@ -97,24 +97,24 @@
                     <h2>ABOUT US</h2>
                 </div>
                 <div class="about-sections-container">
-                    <div class="about-picture-container">
-                        <img src='./img/aboutpicture.jpg' class="about-picture">
-                    </div>
                     <div class="about-description-container">
                         <div class="about-text-container">
-                            <h4>Who We Are</h4>
+                            <img class='about-picture' src='img/aboutpic1.png' />
+                            <h3>Who We Are</h3>
                             <p>We are seasoned dog breeders who have spent the past decade studying canine genetics and enhancing the gene pool of the dogs we breed.</p>
                         </div>
                         <div class="about-text-container">
-                            <h4>Our Dobermans</h4>
+                            <img class='about-picture' src='img/aboutpic2.png' />
+                            <h3>Our Dobermans</h3>
                             <p>What makes our Dobermans different, is that we don’t just mix any male and any female. We are extremely selective when choosing mates for our dogs to breed with.</p>
                         </div>
-                        <div class="about-text-container">    
-                            <h4>Pride In Our Heritage</h4>
+                        <div class="about-text-container"> 
+                            <img class='about-picture' src='img/aboutpic3.png' />   
+                            <h3>Pride In Our Heritage</h3>
                             <p>We hand-pick the sire and the dam, even if it means driving to Texas or Pennsylvania to pick up a potential mate. We do this in order to breed the healthiest and most playful dogs on the market.</p>
                         </div>
-                        <a class="btn-about" href="#contact">Adopt A Doberman Today</a>
                     </div>
+                    <a class="btn-about" href="#contact">Adopt A Doberman Today</a>
                 </div>
             </div>
         </section>
@@ -209,16 +209,22 @@
                 <div class="credibility-sections-container">
                     <div class="credibility-description-container">
                         <div class="credibility-text-container">
-                            <h4>Why Our Dobermans Sell Out Within A Week Of Each New Litter</h4>
+                            <h3>Why Our New Litters Sell Out In A Week</h3>
                             <p>Through our rigorous mate-selection process, we are consistently improving the gene pool of our Dobermans. This means that each litter of puppies has a slightly more enhanced gene pool. This is not some empty claim as many other dog breeders make - this is backed by science.</p>
                         </div>
                         <div class="credibility-text-container">
-                            <h4>90% of our dogs are sold through word-of-mouth</h4>
+                            <h3>90% Of Our Dogs Sold Through Word-Of-Mouth</h3>
                             <p>The quality of genes In our dogs becomes apparent to our clients shortly after adoption. We get so many referrals because our dogs are consistently </p>
                             <ul class="credibility-list">
-                                <li>easier to train, </li>
-                                <li>less likely to suffer from illness, </li>
-                                <li>and more family-friendly </li>
+                                <div class='credibility-bullet-container'>
+                                    <ion-icon class='arrow' name="chevron-forward-outline"></ion-icon><li>easier to train, </li>
+                                </div>
+                                <div class='credibility-bullet-container'>
+                                    <ion-icon class='arrow' name="chevron-forward-outline"></ion-icon><li>less likely to suffer from illness, </li>
+                                </div>
+                                <div class='credibility-bullet-container'>
+                                    <ion-icon class='arrow' name="chevron-forward-outline"></ion-icon><li>and more family-friendly </li>
+                                </div>
                             </ul>
                             <p>than any other Dobermans on the market. Don’t take our word for it, see for yourself.</p>
                         </div>
@@ -243,9 +249,18 @@
                         <label for="email">Email</label>
                         <input required type="text" id="email" name="email" placeholder="Your email..">  
                         <label for="phone">Phone Number</label>
-                        <input type="text" id="number" name="number" placeholder="Your phone number..">  
-                        <label for="subject">Tell Us How We Can Help You</label>
-                        <textarea id="subject" name="subject" placeholder="Your Dream Dog Awaits..." style="height:200px"></textarea>
+                        <input type="text" id="number" name="number" placeholder="Your phone number..">
+                        <label for='reason'>Reason For Contact</label>
+                        <div class='select-container'>
+                            <select required name="reasons" id="reasons">
+                                <option value="reason1">I want a puppy!</option>
+                                <option value="reason2">I want to learn more about your Dobermans.</option>
+                                <option value="reason3">I want to visit your dogs!</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <label id='text-area-label' class='hidden' for="other">Tell Us How We Can Help You</label>
+                        <textarea id='text-area' class='hidden' name="other" placeholder="How can we help you?"></textarea>
                         <div class="submit-btn-container">
                         <input type="submit" value="Submit">
                         </div>

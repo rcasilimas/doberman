@@ -75,3 +75,17 @@ var waypoint = new Waypoint({
     },
     offset: '90%'
   })
+
+
+  // CONTACT FORM
+
+  var contactSelect = document.getElementById("reasons")
+  contactSelect.onchange = function(event) {
+    if (event.target.value == 'other') {
+      document.getElementById('text-area-label').classList.remove('hidden')
+      document.getElementById('text-area').classList.remove('hidden')
+    } else {
+      document.getElementById('text-area-label').classList.add('hidden')
+      document.getElementById('text-area').classList.add('hidden')
+    }
+  }
