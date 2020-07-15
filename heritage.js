@@ -16,8 +16,8 @@ var HeritageSection = function (_React$Component) {
 
         _this.state = {
             home: true,
-            filtered: false,
-            selectedDog: ''
+            selectedDog: null,
+            selectedDog2: null
         };
         return _this;
     }
@@ -27,43 +27,94 @@ var HeritageSection = function (_React$Component) {
         value: function render() {
             var _this2 = this;
 
-            var filteredDog = void 0;
             var clickHandler = function clickHandler(event) {
-                _this2.setState(Object.assign({}, _this2.state, { home: false, filtered: true, selectedDog: event.target.name }));
+                console.log(event.target);
+                _this2.setState(Object.assign({}, _this2.state, { home: false, selectedDog: {
+                        name: event.target.name,
+                        dob: event.target.getAttribute('dob'),
+                        gender: event.target.getAttribute('gender'),
+                        picture: event.target.src
+                    } }));
             };
             var backHandler = function backHandler() {
-                _this2.setState(Object.assign({}, _this2.state, { home: true, filtered: false, selectedDog: '' }));
+                console.log(_this2.state.selectedDog);
+                _this2.setState(Object.assign({}, _this2.state, { home: true, selectedDog: null }));
             };
 
-            if (this.state.selectedDog == 'bubba') {
-                filteredDog = {
-                    name: "Bubba",
-                    DOB: "June 17th, 2015",
-                    gender: 'Male',
-                    snack: 'Pork Rinds',
-                    picture: './img/dobermanheritage1.jpg'
-                };
-            }
-            if (this.state.selectedDog == 'jackie') {
-                filteredDog = {
-                    name: "Jackie",
-                    DOB: "April 2nd, 2014",
-                    gender: 'Female',
-                    snack: 'Ham',
-                    picture: './img/dobermanheritage2.jpg'
-                };
-            }
-            if (this.state.selectedDog == 'wilson') {
-                filteredDog = {
-                    name: "Wilson",
-                    DOB: "December 13th, 2016",
-                    gender: 'Male',
-                    snack: 'Milk',
-                    picture: './img/dobermanheritage3.jpg'
-                };
+            var clickHandler2 = function clickHandler2(event) {
+                _this2.setState(Object.assign({}, _this2.state, { home: false, selectedDog2: {
+                        name: event.target.name,
+                        dob: event.target.getAttribute('dob'),
+                        gender: event.target.getAttribute('gender'),
+                        picture: event.target.src
+                    } }));
+            };
+
+            var backHandler2 = function backHandler2() {
+                _this2.setState(Object.assign({}, _this2.state, { home: false, selectedDog2: null }));
+            };
+
+            if (this.state.selectedDog2) {
+                return React.createElement(
+                    'div',
+                    { style: { width: "100%", display: 'inline-flex', flexDirection: 'column', justifyContent: "center", alignItems: 'center' } },
+                    React.createElement(
+                        'div',
+                        { onClick: backHandler2, style: { width: '100%', display: 'inline-flex', justifyContent: 'flex-start', alignItems: 'center' } },
+                        React.createElement('ion-icon', { style: { cursor: 'pointer', marginRight: '5px' }, size: 'large', name: 'arrow-back-outline' }),
+                        React.createElement(
+                            'p',
+                            null,
+                            'Go Back'
+                        )
+                    ),
+                    React.createElement(
+                        'div',
+                        { style: { width: '100%', display: 'inline-flex', flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center' } },
+                        React.createElement(
+                            'div',
+                            null,
+                            React.createElement('img', { style: { width: '300px', height: '220px', borderRadius: '4px' }, src: this.state.selectedDog.picture })
+                        ),
+                        React.createElement(
+                            'div',
+                            null,
+                            React.createElement(
+                                'p',
+                                null,
+                                React.createElement(
+                                    'strong',
+                                    null,
+                                    'Name: '
+                                ),
+                                this.state.selectedDog.name
+                            ),
+                            React.createElement(
+                                'p',
+                                null,
+                                React.createElement(
+                                    'strong',
+                                    null,
+                                    'Date of Birth: '
+                                ),
+                                this.state.selectedDog.dob
+                            ),
+                            React.createElement(
+                                'p',
+                                null,
+                                React.createElement(
+                                    'strong',
+                                    null,
+                                    'Gender: '
+                                ),
+                                this.state.selectedDog.gender
+                            )
+                        )
+                    )
+                );
             }
 
-            if (this.state.filtered) {
+            if (this.state.selectedDog) {
                 return React.createElement(
                     'div',
                     { style: { width: "100%", display: 'inline-flex', flexDirection: 'column', justifyContent: "center", alignItems: 'center' } },
@@ -83,7 +134,7 @@ var HeritageSection = function (_React$Component) {
                         React.createElement(
                             'div',
                             null,
-                            React.createElement('img', { style: { width: '300px', height: '220px', borderRadius: '4px' }, src: filteredDog.picture })
+                            React.createElement('img', { style: { width: '300px', height: '220px', borderRadius: '4px' }, src: this.state.selectedDog.picture })
                         ),
                         React.createElement(
                             'div',
@@ -96,7 +147,7 @@ var HeritageSection = function (_React$Component) {
                                     null,
                                     'Name: '
                                 ),
-                                filteredDog.name
+                                this.state.selectedDog.name
                             ),
                             React.createElement(
                                 'p',
@@ -106,7 +157,7 @@ var HeritageSection = function (_React$Component) {
                                     null,
                                     'Date of Birth: '
                                 ),
-                                filteredDog.DOB
+                                this.state.selectedDog.dob
                             ),
                             React.createElement(
                                 'p',
@@ -116,23 +167,41 @@ var HeritageSection = function (_React$Component) {
                                     null,
                                     'Gender: '
                                 ),
-                                filteredDog.gender
-                            ),
-                            React.createElement(
-                                'p',
-                                null,
-                                React.createElement(
-                                    'strong',
-                                    null,
-                                    'Favorite Snack: '
-                                ),
-                                filteredDog.snack
+                                this.state.selectedDog.gender
                             )
                         ),
                         React.createElement(
                             'div',
-                            null,
-                            React.createElement('img', { style: { width: '400px', height: '300px', borderRadius: '4px' }, src: './img/heritage-certificate.jpg' })
+                            { style: { display: 'inline-flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' } },
+                            React.createElement(
+                                'h3',
+                                { style: { marginBottom: '20px' } },
+                                'Heritage:'
+                            ),
+                            React.createElement(
+                                'div',
+                                { style: { display: 'inline-flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' } },
+                                React.createElement(
+                                    'div',
+                                    { style: { display: 'inline-flex', marginRight: '20px', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' } },
+                                    React.createElement(
+                                        'h4',
+                                        { style: { marginBottom: '10px' } },
+                                        'Mother'
+                                    ),
+                                    React.createElement('img', { onClick: clickHandler2, style: { cursor: 'pointer', width: '200px', height: '150px', borderRadius: '4px' }, src: this.state.selectedDog.picture })
+                                ),
+                                React.createElement(
+                                    'div',
+                                    { style: { display: 'inline-flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' } },
+                                    React.createElement(
+                                        'h4',
+                                        null,
+                                        'Father'
+                                    ),
+                                    React.createElement('img', { onClick: clickHandler2, style: { cursor: 'pointer', width: '200px', height: '150px', borderRadius: '4px' }, src: this.state.selectedDog.picture })
+                                )
+                            )
                         )
                     )
                 );
@@ -141,36 +210,108 @@ var HeritageSection = function (_React$Component) {
             if (this.state.home) {
                 return React.createElement(
                     'div',
-                    { style: { width: "100%", display: 'inline-flex', flexDirection: 'row', justifyContent: "space-evenly", alignItems: 'center' } },
+                    { style: { width: "100%", display: 'inline-flex', flexDirection: 'column', justifyContent: "center", alignItems: 'center' } },
                     React.createElement(
                         'div',
-                        { onClick: clickHandler, style: { width: '400px', height: '400px', cursor: "pointer" } },
+                        { style: { width: "100%", marginBottom: '40px', display: 'inline-flex', flexDirection: 'row', justifyContent: "space-evenly", alignItems: 'center' } },
                         React.createElement(
-                            'h3',
-                            { style: { textAlign: 'center', marginBottom: '30px' } },
-                            'My name is Bubba. Click on my picture to learn more about me!'
+                            'div',
+                            { 'class': 'heritage-pic-container' },
+                            React.createElement('img', { dob: 'January 19th, 2017', gender: 'Male', onClick: clickHandler, className: 'heritage-pic', name: 'Bubba', src: './img/dobermanheritage1.jpg' }),
+                            React.createElement(
+                                'p',
+                                { 'class': 'heritage-text' },
+                                'My name is Bubba. Click on my picture to learn more about me!'
+                            )
                         ),
-                        React.createElement('img', { name: 'bubba', style: { width: '400px', height: '300px', borderRadius: '4px' }, src: './img/dobermanheritage1.jpg' })
+                        React.createElement(
+                            'div',
+                            { 'class': 'heritage-pic-container' },
+                            React.createElement('img', { onClick: clickHandler, dob: 'May 8th, 2016', gender: 'Female', 'class': 'heritage-pic', name: 'Jackie', src: './img/dobermanheritage2.jpg' }),
+                            React.createElement(
+                                'p',
+                                { 'class': 'heritage-text' },
+                                'My name is Jackie. Click on my picture to learn more about me!'
+                            )
+                        ),
+                        React.createElement(
+                            'div',
+                            { 'class': 'heritage-pic-container' },
+                            React.createElement('img', { onClick: clickHandler, dob: 'October 29th, 2015', gender: 'Male', 'class': 'heritage-pic', name: 'Wilson', src: './img/dobermanheritage3.jpg' }),
+                            React.createElement(
+                                'p',
+                                { 'class': 'heritage-text' },
+                                'My name is Wilson. Click on my picture to learn more about me!'
+                            )
+                        )
                     ),
                     React.createElement(
                         'div',
-                        { onClick: clickHandler, style: { width: '400px', height: '400px', cursor: "pointer" } },
+                        { style: { width: "100%", marginBottom: '40px', display: 'inline-flex', flexDirection: 'row', justifyContent: "space-evenly", alignItems: 'center' } },
                         React.createElement(
-                            'h3',
-                            { style: { textAlign: 'center', marginBottom: '30px' } },
-                            'My name is Jackie. Click on my picture to learn more about me!'
+                            'div',
+                            { 'class': 'heritage-pic-container' },
+                            React.createElement('img', { dob: 'January 19th, 2017', gender: 'Male', onClick: clickHandler, className: 'heritage-pic', name: 'Bubba', src: './img/dobermanheritage1.jpg' }),
+                            React.createElement(
+                                'p',
+                                { 'class': 'heritage-text' },
+                                'My name is Bubba. Click on my picture to learn more about me!'
+                            )
                         ),
-                        React.createElement('img', { name: 'jackie', style: { width: '400px', height: '300px', borderRadius: '4px' }, src: './img/dobermanheritage2.jpg' })
+                        React.createElement(
+                            'div',
+                            { 'class': 'heritage-pic-container' },
+                            React.createElement('img', { onClick: clickHandler, dob: 'May 8th, 2016', gender: 'Female', 'class': 'heritage-pic', name: 'Jackie', src: './img/dobermanheritage2.jpg' }),
+                            React.createElement(
+                                'p',
+                                { 'class': 'heritage-text' },
+                                'My name is Jackie. Click on my picture to learn more about me!'
+                            )
+                        ),
+                        React.createElement(
+                            'div',
+                            { 'class': 'heritage-pic-container' },
+                            React.createElement('img', { onClick: clickHandler, dob: 'October 29th, 2015', gender: 'Male', 'class': 'heritage-pic', name: 'Wilson', src: './img/dobermanheritage3.jpg' }),
+                            React.createElement(
+                                'p',
+                                { 'class': 'heritage-text' },
+                                'My name is Wilson. Click on my picture to learn more about me!'
+                            )
+                        )
                     ),
                     React.createElement(
                         'div',
-                        { onClick: clickHandler, style: { width: '400px', height: '400px', cursor: "pointer" } },
+                        { style: { width: "100%", marginBottom: '40px', display: 'inline-flex', flexDirection: 'row', justifyContent: "space-evenly", alignItems: 'center' } },
                         React.createElement(
-                            'h3',
-                            { style: { textAlign: 'center', marginBottom: '30px' } },
-                            'My name is Wilson. Click on my picture to learn more about me!'
+                            'div',
+                            { 'class': 'heritage-pic-container' },
+                            React.createElement('img', { dob: 'January 19th, 2017', gender: 'Male', onClick: clickHandler, className: 'heritage-pic', name: 'Bubba', src: './img/dobermanheritage1.jpg' }),
+                            React.createElement(
+                                'p',
+                                { 'class': 'heritage-text' },
+                                'My name is Bubba. Click on my picture to learn more about me!'
+                            )
                         ),
-                        React.createElement('img', { name: 'wilson', style: { width: '400px', height: '300px', borderRadius: '4px' }, src: './img/dobermanheritage3.jpg' })
+                        React.createElement(
+                            'div',
+                            { 'class': 'heritage-pic-container' },
+                            React.createElement('img', { onClick: clickHandler, dob: 'May 8th, 2016', gender: 'Female', 'class': 'heritage-pic', name: 'Jackie', src: './img/dobermanheritage2.jpg' }),
+                            React.createElement(
+                                'p',
+                                { 'class': 'heritage-text' },
+                                'My name is Jackie. Click on my picture to learn more about me!'
+                            )
+                        ),
+                        React.createElement(
+                            'div',
+                            { 'class': 'heritage-pic-container' },
+                            React.createElement('img', { onClick: clickHandler, dob: 'October 29th, 2015', gender: 'Male', 'class': 'heritage-pic', name: 'Wilson', src: './img/dobermanheritage3.jpg' }),
+                            React.createElement(
+                                'p',
+                                { 'class': 'heritage-text' },
+                                'My name is Wilson. Click on my picture to learn more about me!'
+                            )
+                        )
                     )
                 );
             }

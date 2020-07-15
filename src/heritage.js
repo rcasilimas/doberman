@@ -3,52 +3,61 @@ class HeritageSection extends React.Component {
         super(props)
         this.state = {
             home: true,
-            filtered: false,
-            selectedDog: ''
+            selectedDog: null,
+            selectedDog2: null
         }
     }
 
     render() {
-        let filteredDog;
         const clickHandler = (event) => {
-            this.setState({ ...this.state, home: false, filtered: true, selectedDog: event.target.name})
+            console.log(event.target)
+            this.setState({ ...this.state, home: false, selectedDog: {
+                name: event.target.name,
+                dob: event.target.getAttribute('dob'),
+                gender: event.target.getAttribute('gender'),
+                picture: event.target.src
+            }})
         }
         const backHandler = () => {
-            this.setState({ ...this.state, home: true, filtered: false, selectedDog: ''})
+            console.log(this.state.selectedDog)
+            this.setState({ ...this.state, home: true, selectedDog: null})
         }
 
-        if (this.state.selectedDog == 'bubba') {
-            filteredDog = {
-                name: "Bubba",
-                DOB: "June 17th, 2015",
-                gender: 'Male',
-                snack: 'Pork Rinds',
-                picture: './img/dobermanheritage1.jpg'
-            }
-        } 
-        if (this.state.selectedDog == 'jackie') {
-            filteredDog = {
-                name: "Jackie",
-                DOB: "April 2nd, 2014",
-                gender: 'Female',
-                snack: 'Ham',
-                picture: './img/dobermanheritage2.jpg'
-            }
-        } 
-        if (this.state.selectedDog == 'wilson') {
-            filteredDog = {
-                name: "Wilson",
-                DOB: "December 13th, 2016",
-                gender: 'Male',
-                snack: 'Milk',
-                picture: './img/dobermanheritage3.jpg'
-            }
+        const clickHandler2 = (event) => {
+            this.setState({ ...this.state, home: false, selectedDog2: {
+                name: event.target.name,
+                dob: event.target.getAttribute('dob'),
+                gender: event.target.getAttribute('gender'),
+                picture: event.target.src
+            }})
         }
 
+        const backHandler2 = () => {
+            this.setState({ ...this.state, home: false, selectedDog2: null})
+        }
 
-        
+        if (this.state.selectedDog2) {
+            return (
+                <div style={{width: "100%", display: 'inline-flex', flexDirection: 'column', justifyContent: "center", alignItems: 'center'}}>
+                    <div onClick={backHandler2} style={{width: '100%', display: 'inline-flex', justifyContent: 'flex-start', alignItems: 'center'}}>
+                        <ion-icon style={{cursor: 'pointer', marginRight: '5px'}} size='large' name="arrow-back-outline"></ion-icon>
+                        <p>Go Back</p>
+                    </div>
+                    <div style={{width: '100%', display: 'inline-flex', flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center'}}>
+                        <div>
+                            <img style={{width: '300px', height: '220px', borderRadius: '4px'}} src={this.state.selectedDog.picture} />
+                        </div>
+                        <div>
+                            <p><strong>Name: </strong>{this.state.selectedDog.name}</p>
+                            <p><strong>Date of Birth: </strong>{this.state.selectedDog.dob}</p>
+                            <p><strong>Gender: </strong>{this.state.selectedDog.gender}</p>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
 
-        if (this.state.filtered) {
+        if (this.state.selectedDog) {
             return (
                 <div style={{width: "100%", display: 'inline-flex', flexDirection: 'column', justifyContent: "center", alignItems: 'center'}}>
                     <div onClick={backHandler} style={{width: '100%', display: 'inline-flex', justifyContent: 'flex-start', alignItems: 'center'}}>
@@ -57,16 +66,25 @@ class HeritageSection extends React.Component {
                     </div>
                     <div style={{width: '100%', display: 'inline-flex', flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center'}}>
                         <div>
-                            <img style={{width: '300px', height: '220px', borderRadius: '4px'}} src={filteredDog.picture} />
+                            <img style={{width: '300px', height: '220px', borderRadius: '4px'}} src={this.state.selectedDog.picture} />
                         </div>
                         <div>
-                            <p><strong>Name: </strong>{filteredDog.name}</p>
-                            <p><strong>Date of Birth: </strong>{filteredDog.DOB}</p>
-                            <p><strong>Gender: </strong>{filteredDog.gender}</p>
-                            <p><strong>Favorite Snack: </strong>{filteredDog.snack}</p>
+                            <p><strong>Name: </strong>{this.state.selectedDog.name}</p>
+                            <p><strong>Date of Birth: </strong>{this.state.selectedDog.dob}</p>
+                            <p><strong>Gender: </strong>{this.state.selectedDog.gender}</p>
                         </div>
-                        <div>
-                            <img style={{width: '400px', height: '300px', borderRadius: '4px'}} src='./img/heritage-certificate.jpg' />
+                        <div style={{display: 'inline-flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                            <h3 style={{marginBottom: '20px'}}>Heritage:</h3>
+                            <div style={{display: 'inline-flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}} >
+                                <div  style={{display: 'inline-flex', marginRight: '20px', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                                    <h4 style={{marginBottom: '10px'}}>Mother</h4>
+                                    <img onClick={clickHandler2} style={{cursor: 'pointer', width: '200px', height: '150px', borderRadius: '4px'}} src={this.state.selectedDog.picture} />
+                                </div>
+                                <div  style={{display: 'inline-flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                                    <h4>Father</h4>
+                                    <img  onClick={clickHandler2} style={{cursor: 'pointer', width: '200px', height: '150px', borderRadius: '4px'}} src={this.state.selectedDog.picture} />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -75,18 +93,48 @@ class HeritageSection extends React.Component {
 
         if (this.state.home) {
             return (
-                <div style={{width: "100%", display: 'inline-flex', flexDirection: 'row', justifyContent: "space-evenly", alignItems: 'center'}}>
-                    <div onClick={clickHandler} style={{width: '400px', height: '400px', cursor: "pointer"}}>
-                        <h3 style={{textAlign: 'center', marginBottom: '30px'}}>My name is Bubba. Click on my picture to learn more about me!</h3>
-                        <img name='bubba' style={{width: '400px', height: '300px', borderRadius: '4px'}} src='./img/dobermanheritage1.jpg' />
+                <div style={{width: "100%", display: 'inline-flex', flexDirection: 'column', justifyContent: "center", alignItems: 'center'}}>
+                    <div style={{width: "100%", marginBottom: '40px', display: 'inline-flex', flexDirection: 'row', justifyContent: "space-evenly", alignItems: 'center'}}>
+                        <div class='heritage-pic-container'  >
+                            <img dob='January 19th, 2017' gender='Male' onClick={clickHandler} className='heritage-pic' name='Bubba' src='./img/dobermanheritage1.jpg' />
+                            <p class='heritage-text' >My name is Bubba. Click on my picture to learn more about me!</p>
+                        </div>
+                        <div class='heritage-pic-container'  >
+                            <img onClick={clickHandler} dob='May 8th, 2016' gender='Female' class='heritage-pic' name='Jackie' src='./img/dobermanheritage2.jpg' />
+                            <p class='heritage-text' >My name is Jackie. Click on my picture to learn more about me!</p>
+                        </div>
+                        <div class='heritage-pic-container'  >
+                            <img onClick={clickHandler} dob='October 29th, 2015' gender='Male' class='heritage-pic' name='Wilson' src='./img/dobermanheritage3.jpg' />
+                            <p class='heritage-text'>My name is Wilson. Click on my picture to learn more about me!</p>
+                        </div>
                     </div>
-                    <div onClick={clickHandler} style={{width: '400px', height: '400px', cursor: "pointer"}}>
-                        <h3 style={{textAlign: 'center', marginBottom: '30px'}}>My name is Jackie. Click on my picture to learn more about me!</h3>
-                        <img name='jackie' style={{width: '400px', height: '300px', borderRadius: '4px'}} src='./img/dobermanheritage2.jpg' />
+                    <div style={{width: "100%", marginBottom: '40px', display: 'inline-flex', flexDirection: 'row', justifyContent: "space-evenly", alignItems: 'center'}}>
+                        <div class='heritage-pic-container'  >
+                            <img dob='January 19th, 2017' gender='Male' onClick={clickHandler} className='heritage-pic' name='Bubba' src='./img/dobermanheritage1.jpg' />
+                            <p class='heritage-text' >My name is Bubba. Click on my picture to learn more about me!</p>
+                        </div>
+                        <div class='heritage-pic-container'  >
+                            <img onClick={clickHandler} dob='May 8th, 2016' gender='Female' class='heritage-pic' name='Jackie' src='./img/dobermanheritage2.jpg' />
+                            <p class='heritage-text' >My name is Jackie. Click on my picture to learn more about me!</p>
+                        </div>
+                        <div class='heritage-pic-container'  >
+                            <img onClick={clickHandler} dob='October 29th, 2015' gender='Male' class='heritage-pic' name='Wilson' src='./img/dobermanheritage3.jpg' />
+                            <p class='heritage-text'>My name is Wilson. Click on my picture to learn more about me!</p>
+                        </div>
                     </div>
-                    <div onClick={clickHandler} style={{width: '400px', height: '400px', cursor: "pointer"}}>
-                        <h3 style={{textAlign: 'center', marginBottom: '30px'}}>My name is Wilson. Click on my picture to learn more about me!</h3>
-                        <img name='wilson' style={{width: '400px', height: '300px', borderRadius: '4px'}} src='./img/dobermanheritage3.jpg' />
+                    <div style={{width: "100%", marginBottom: '40px', display: 'inline-flex', flexDirection: 'row', justifyContent: "space-evenly", alignItems: 'center'}}>
+                        <div class='heritage-pic-container'  >
+                            <img dob='January 19th, 2017' gender='Male' onClick={clickHandler} className='heritage-pic' name='Bubba' src='./img/dobermanheritage1.jpg' />
+                            <p class='heritage-text' >My name is Bubba. Click on my picture to learn more about me!</p>
+                        </div>
+                        <div class='heritage-pic-container'  >
+                            <img onClick={clickHandler} dob='May 8th, 2016' gender='Female' class='heritage-pic' name='Jackie' src='./img/dobermanheritage2.jpg' />
+                            <p class='heritage-text' >My name is Jackie. Click on my picture to learn more about me!</p>
+                        </div>
+                        <div class='heritage-pic-container'  >
+                            <img onClick={clickHandler} dob='October 29th, 2015' gender='Male' class='heritage-pic' name='Wilson' src='./img/dobermanheritage3.jpg' />
+                            <p class='heritage-text'>My name is Wilson. Click on my picture to learn more about me!</p>
+                        </div>
                     </div>
                 </div>
             )
